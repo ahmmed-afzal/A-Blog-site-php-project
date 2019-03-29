@@ -44,7 +44,7 @@
                 <td><?=  $fm->formatDate($result['date']); ?></td>
                 <td>
                   <a href="editpost.php?editpostId=<?=$result['id']; ?>">Edit</a> ||
-                  <a href="deletepost.php?deletepostId=<?=$result['id'];?>">Delete</a>
+                  <a  href="deletepost.php?deletepostId=<?=$result['id'];?>">Delete</a>
                 </td>
               </tr>
             <?php }} ?>

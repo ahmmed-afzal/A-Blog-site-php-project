@@ -3,8 +3,8 @@
 <?php include"helpers/Format.php"?>
 
 <?php
-	$db = new Database();
-	$fm = new Format();
+$db = new Database();
+$fm = new Format();
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,57 +21,65 @@
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/jquery.nivo.slider.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-$(window).load(function() {
-	$('#slider').nivoSlider({
-		effect:'random',
-		slices:10,
-		animSpeed:500,
-		pauseTime:5000,
-		startSlide:0, //Set starting Slide (0 index)
-		directionNav:false,
-		directionNavHide:false, //Only show on hover
-		controlNav:false, //1,2,3...
-		controlNavThumbs:false, //Use thumbnails for Control Nav
-		pauseOnHover:true, //Stop animation while hovering
-		manualAdvance:false, //Force manual transitions
-		captionOpacity:0.8, //Universal caption opacity
-		beforeChange: function(){},
-		afterChange: function(){},
-		slideshowEnd: function(){} //Triggers after all slides have been shown
+	<script type="text/javascript">
+	$(window).load(function() {
+		$('#slider').nivoSlider({
+			effect:'random',
+			slices:10,
+			animSpeed:500,
+			pauseTime:5000,
+			startSlide:0, //Set starting Slide (0 index)
+			directionNav:false,
+			directionNavHide:false, //Only show on hover
+			controlNav:false, //1,2,3...
+			controlNavThumbs:false, //Use thumbnails for Control Nav
+			pauseOnHover:true, //Stop animation while hovering
+			manualAdvance:false, //Force manual transitions
+			captionOpacity:0.8, //Universal caption opacity
+			beforeChange: function(){},
+			afterChange: function(){},
+			slideshowEnd: function(){} //Triggers after all slides have been shown
+		});
 	});
-});
 </script>
 </head>
 
 <body>
 	<div class="headersection templete clear">
 		<a href="index.php">
-			<div class="logo">
-				<img src="images/logo.png" alt="Logo"/>
-				<h2>Website Title</h2>
-				<p>Our website description</p>
-			</div>
-		</a>
-		<div class="social clear">
-			<div class="icon clear">
-				<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
-			</div>
-			<div class="searchbtn clear">
-			<form action="search.php" method="get">
-				<input type="text" name="search" placeholder="Search keyword..."/>
-				<input type="submit" name="submit" value="Search"/>
-			</form>
+			<?php
+			$query = "SELECT * FROM title_slogan WHERE id ='1'";
+			$blog_title = $db->select($query);
+			if($blog_title){
+				while($result = $blog_title->fetch_assoc()){
+
+					?>
+					<div class="logo">
+						<img src="admin/<?=  $result['logo']; ?>" alt="Logo"/>
+						<h2><?=  $result['title']; ?></h2>
+						<p><?=  $result['slogan']; ?></p>
+					</div>
+				<?php }} ?>
+			</a>
+			<div class="social clear">
+				<div class="icon clear">
+					<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+					<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+					<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+					<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+				</div>
+				<div class="searchbtn clear">
+					<form action="search.php" method="get">
+						<input type="text" name="search" placeholder="Search keyword..."/>
+						<input type="submit" name="submit" value="Search"/>
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>
-<div class="navsection templete">
-	<ul>
-		<li><a id="active" href="index.php">Home</a></li>
-		<li><a href="about.php">About</a></li>
-		<li><a href="contact.php">Contact</a></li>
-	</ul>
-</div>
+		<div class="navsection templete">
+			<ul>
+				<li><a id="active" href="index.php">Home</a></li>
+				<li><a href="about.php">About</a></li>
+				<li><a href="contact.php">Contact</a></li>
+			</ul>
+		</div>

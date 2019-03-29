@@ -11,6 +11,7 @@ Session::init();
 $db = new Database();
 $fm = new Format();
 ?>
+
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">

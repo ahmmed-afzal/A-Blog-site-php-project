@@ -18,6 +18,7 @@
       $InsertRow = $db->insert($query);
       if($InsertRow>0){
         echo "<span class='success'>Data Inserted Successfully.</span>";
+        echo "<script>window.location='postlist.php';</script";
       }else{
         echo "<span class='error' >Something Went Wrong!</span>";
       }
